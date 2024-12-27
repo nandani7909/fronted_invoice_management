@@ -50,8 +50,12 @@ const InvoicesListing = (props) => {
 
   useEffect(() => {
     if (invoices?.data !== undefined && !invoices?.isInvoices) {
-      setInvoiceData(invoices?.data?.data);
-      setPending(false);
+      if (invoices?.data?.data.length === 0) {
+        setPending(false);
+      } else {
+        setInvoiceData(invoices?.data?.data);
+        setPending(false);
+      }
     }
   }, [invoices?.data, invoices?.isInvoices]);
 
